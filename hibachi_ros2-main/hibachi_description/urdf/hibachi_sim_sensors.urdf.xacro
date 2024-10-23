@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<gazebo reference="xsens_imu_link">
+<sensor name="xsens_imu" type="imu">
+    <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <ros>
+            <namespace>/mti_630_8A1G6</namespace>
+            <remapping>~/out:=imu/data</remapping>
+        </ros>
+        <initial_orientation_as_reference>false</initial_orientation_as_reference>
+        <!-- <frame_name>xsens_imu_link</frame_name> -->
+    </plugin>
+    <always_on>true</always_on>
+    <update_rate>100</update_rate>
+    <visualize>true</visualize>
+    <imu>
+        <angular_velocity>
+        <x>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+        </noise>
+        </x>
+        <y>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+        </noise>
+        </y>
+        <z>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>2e-4</stddev>
+            <bias_mean>0.0000075</bias_mean>
+            <bias_stddev>0.0000008</bias_stddev>
+        </noise>
+        </z>
+        </angular_velocity>
+        <linear_acceleration>
+        <x>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.00001</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+        </noise>
+        </x>
+        <y>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.00001</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+        </noise>
+        </y>
+        <z>
+        <noise type="gaussian">
+            <mean>0.0</mean>
+            <stddev>1.7e-2</stddev>
+            <bias_mean>0.00001</bias_mean>
+            <bias_stddev>0.001</bias_stddev>
+        </noise>
+        </z>
+        </linear_acceleration>
+    </imu>
+</sensor>
+</gazebo>
+
+<gazebo reference="rplidar_a1">
+<sensor name="rplidar_a1" type="ray">
+
+    <!-- ________ NUEVO ________ -->
+    <pose>0 0 0 0 0 0</pose>
+    <visualize>true</visualize> <!-- False en el ejemplo -->
+    <update_rate>5</update_rate> <!-- 20 en el ejemplo -->
+    <always_on>true</always_on> <!-- No está presente -->
+    
+    <ray>
+        <scan>
+            <horizontal>
+                <samples>360</samples>
+                <resolution>1.000000</resolution>
+                <min_angle>0.000000</min_angle>
+                <max_angle>6.280000</max_angle>
+            </horizontal>
+        </scan>
+        <range>
+            <min>0.120000</min>
+            <max>3.5</max>
+            <resolution>0.015000</resolution>
+        </range>
+        <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.01</stddev>
+        </noise>
+    </ray>
+
+    <plugin name="scan" filename="libgazebo_ros_ray_sensor.so">
+        <ros>
+            <remapping>~/out:=scan</remapping>
+        </ros>
+        <output_type>sensor_msgs/LaserScan</output_type>
+        <frame_name>rplidar_a1</frame_name>
+    </plugin>
+</sensor>
+</gazebo>
+
+<!-- <gazebo>
+<plugin name="p3d_base_controller" filename="libgazebo_ros_p3d.so">
+    <alwaysOn>true</alwaysOn>
+    <updateRate>50.0</updateRate>
+    <robotNamespace>/</robotNamespace>
+    <bodyName>base_link</bodyName>
+    <body_name>base_link</body_name>
+    <frameId>base_link</frameId>
+    <topicName>ground_truth/state</topicName>
+    <gaussianNoise>0</gaussianNoise>
+    <frameName>world</frameName>
+    <xyzOffsets>0 0 0</xyzOffsets>
+    <rpyOffsets>0 0 0</rpyOffsets>
+</plugin>
+</gazebo> -->
+
+<gazebo>
+    <plugin name="gazebo_ros_p3d" filename="libgazebo_ros_p3d.so">
+
+      <ros>
+
+        <!-- Add a namespace -->
+        <namespace>/p3d_ground_truth</namespace>
+
+        <!-- Remap the default topic -->
+        <remapping>odom:=p3d_odom</remapping>
+
+      </ros>
+
+      <!-- Name of the link within this model whose pose will be published -->
+      <body_name>base_link</body_name>
+
+      <!-- Name of another link within this model to use as a reference frame.
+           Remove the tag to use the world as a reference. -->
+      <frame_name>odom</frame_name>
+
+      <!-- Update rate in Hz, defaults to 0.0, which means as fast as possible -->
+      <update_rate>100</update_rate>
+
+      <!-- Translation offset to be added to the pose. -->
+      <xyz_offset>0.01 0.01 0.01</xyz_offset>
+
+      <!-- Rotation offset to be added to the pose, in Euler angles. -->
+      <rpy_offset>0.01 0.01 0.01</rpy_offset>
+
+      <!-- Standard deviation of the noise to be added to the reported velocities. -->
+      <gaussian_noise>0.01</gaussian_noise>
+
+    </plugin>
+</gazebo>
+
+
+
+</robot>

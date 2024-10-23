@@ -1,0 +1,1 @@
+SUBSYSTEM=="tty", ATTRS{idVendor}=="2639", ATTRS{idProduct}=="0301", ATTRS{serial}=="AH7L5J97", SYMLINK+="xsens-mti-630", MODE="0660", GROUP="dialout"

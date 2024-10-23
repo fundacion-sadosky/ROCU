@@ -1,0 +1,7 @@
+ardusimple/ardusimple_navsat_driver:
+  ros__parameters:
+    port: "/dev/ttyACM1"
+    baud: 9600
+    frame_id: "ardusimple_ant_link"
+    time_ref_source: "gps"
+    useRMC: False

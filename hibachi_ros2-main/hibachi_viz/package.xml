@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>hibachi_viz</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="gsanchez@sinc.unl.edu.ar">Guido Sanchez</maintainer>
+  <maintainer email="acapovilla@sinc.unl.edu.ar">Agustin Capovilla</maintainer>
+  <license>TODO: License declaration</license>
+  <!-- Unknown license 'TODO: License declaration'.  This has been set in the package.xml, but no LICENSE file has been created.
+It is recommended to use one of the ament license identitifers:
+Apache-2.0
+BSL-1.0
+BSD-2.0
+BSD-2-Clause
+BSD-3-Clause
+GPL-3.0-only
+LGPL-3.0-only
+MIT
+MIT-0 -->
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>hibachi_description</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+
+  <depend>launch_ros</depend>
+
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
