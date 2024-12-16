@@ -1,0 +1,4 @@
+# Diseño e implementación de una plataforma robótica autónoma para eliminar microorganismos de cultivos de frutillas utilizando luz ultravioleta (ROCU)
+## Teembu + Instituto de Investigaciones en Señales, Sistemas e Inteligencia Computacional (SINC), Facultad de Ingeniería y Ciencias Hídricas (FICH) + UNL/CONICET
+Este proyecto buscar innovar en la agricultura de frutas finas, aportando robótica de última generación a su tratamiento. Se trata del desarrollo de una plataforma robótica para el tratamiento de cultivos de frutilla, implementando radiación ultravioleta corta (UVC) para la eliminación de hongos, enfermedades y plagas. Incluirá algoritmos que permitan navegar terrenos adversos con criterios de optimización económica, realizando la sanitización de los cultivos durante la noche y de manera autónoma.
+###### Link al vídeo de presentación del proyecto: https://youtu.be/ZWLEHX65VXQ
